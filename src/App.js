@@ -2,7 +2,7 @@ import CrudForm from "./components/CrudForm";
 
 function App() {
   return (
-    <div className="app">
+    <div>
       <CrudForm />
     </div>
   );
