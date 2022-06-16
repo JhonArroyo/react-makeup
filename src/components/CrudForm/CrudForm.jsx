@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Products from './Products.json';
+import Products from '../../Products.json';
 
 const CrudForm = () => {
     const [getProducts] = useState(Products);
