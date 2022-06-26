@@ -3,5 +3,26 @@
         "product": "Colgate",
         "quantity"  : 23,
         "price" : 2.99
+    },
+    {   "id": 2,
+        "product": "Nivea",
+        "quantity"  : 12,
+        "price" : 3.99
+    },
+    {   "id": 3,
+        "product": "Lipton",
+        "quantity"  : 15,
+        "price" : 4.99
+    },
+    {   "id": 4,
+        "product": "Dettol",
+        "quantity"  : 10,
+        "price" : 1.99
+    },
+    {   "id": 5,
+        "product": "Dabur",
+        "quantity"  : 20,
+        "price" : 2.99
     }
+    
 ]

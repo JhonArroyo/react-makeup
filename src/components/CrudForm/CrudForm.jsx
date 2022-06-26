@@ -5,11 +5,12 @@ import Products from '../../json/Products.json';
 const CrudForm = (props) => {
     const [getProducts, setProducts] = useState(Products);
     const [getSubmitForm, setSubmitForm] = useState(
-    {
-        product: '',
-        quantity: '',
-        price: '',
-    });
+        {
+            product: '',
+            quantity: '',
+            price: '',
+        });
+    const [search, setSearch] = useState('');
 
     const handleChangeForm = (e) => {
         e.preventDefault();
@@ -39,44 +40,50 @@ const CrudForm = (props) => {
             <h1>CRUD Form</h1>
             <form onSubmit={handleSubmitForm}>
                 <label>Product name:</label><br />
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     name="product"
                     onChange={handleChangeForm}
                 /><br />
                 <label>Quantity:</label><br />
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     name="quantity"
                     onChange={handleChangeForm}
                 /><br />
                 <label>Price:</label><br />
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     name="price"
                     onChange={handleChangeForm}
                 /><br /><br />
-                <input 
-                    type="submit" 
+                <input
+                    type="submit"
                     value="Enviar"
                 /><br />
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     placeholder="search"
+                    onChange={(e) => 
+                        {setSearch(e.target.value)
+                    }}
                 />
             </form>
-            <ul>
-                {getProducts.map((element) => (
-                    <li key={element.id}>
-                        Product: {element.product}
-                        <br />
-                        Quantity: {element.quantity}
-                        <br />
-                        Price: {element.price}
-                        <br />
-                    </li>
-                ))}
-            </ul>
+            <div>
+                {getProducts.filter((element) => {
+                   if(search === ''){
+                       return element;
+                   } else if (element.product.toLowerCase().includes(search.toLowerCase())){
+                       return element;
+                   }
+                }).map((element, key) => {
+                    return (
+                        <div key={key}>
+                            <p>{element.product}</p>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }
