@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Products from '../../json/Products.json';
 //import { saveLocalStorageValues } from '../../localstorage';
 
-const CrudForm = (props) => {
+const CrudForm = () => {
     const [getProducts, setProducts] = useState(Products);
     const [getSubmitForm, setSubmitForm] = useState(
         {
@@ -64,25 +64,19 @@ const CrudForm = (props) => {
                 <input
                     type="text"
                     placeholder="search"
-                    onChange={(e) => 
-                        {setSearch(e.target.value)
+                    onChange={(e) => {
+                        setSearch(e.target.value)
                     }}
                 />
             </form>
             <div>
-                {getProducts.filter((element) => {
-                   if(search === ''){
-                       return element;
-                   } else if (element.product.toLowerCase().includes(search.toLowerCase())){
-                       return element;
-                   }
-                }).map((element, key) => {
-                    return (
-                        <div key={key}>
-                            <p>{element.product}</p>
-                        </div>
-                    );
-                })}
+                {getProducts.filter((element) =>
+                    element.product.toLowerCase().includes(search.toLowerCase())
+                ).map((element, key) => (
+                    <div key={key}>
+                        <p>{element.product}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );
